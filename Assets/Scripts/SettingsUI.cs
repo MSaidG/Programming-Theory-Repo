@@ -9,7 +9,7 @@ public class SettingsUI : MonoBehaviour
 {
     [SerializeField]private AudioMixer audioMixer;
 
-    public TMP_Dropdown resolutionDropdown;
+    private TMP_Dropdown resolutionDropdown;
 
     private Resolution[] resolutions;
 

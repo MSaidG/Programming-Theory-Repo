@@ -17,6 +17,6 @@ public class BasketBallCount : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         countBasketBall += 1;
-        counterText.text = "Count: " + countBasketBall;
+        counterText.text = "Score: " + countBasketBall;
     }
 }

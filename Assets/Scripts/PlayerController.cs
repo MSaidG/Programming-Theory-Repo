@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,33 +18,46 @@ public class PlayerController : MonoBehaviour
     private float sliderFill = 0;
     private float runTime = 2f;
 
+    private bool isPaused;
+
     // Start is called before the first frame update
     void Start()
     {
+        isPaused = false;
         forceSlider.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(Time.timeScale == 1 && !EventSystem.current.IsPointerOverGameObject())
         {
-            forceSlider.value = forceSlider.minValue;
-            holdDownButtonStartTime = Time.time;
-        }
+            
 
-        if (Input.GetMouseButton(0))
-        {
-            FillBar();
-        }
+            if (Input.GetMouseButtonDown(0) && !isPaused)
+            {
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            ResetSliderBar();
-            holdDownButtonFinishTime = Time.time;
-            ThrowBall(holdDownButtonFinishTime - holdDownButtonStartTime);
-        }
+                forceSlider.value = forceSlider.minValue;
+                holdDownButtonStartTime = Time.time;
+            }
 
+            if (Input.GetMouseButton(0) && !isPaused)
+            {
+                FillBar();
+            }
+
+            if (Input.GetMouseButtonUp(0) && !isPaused)
+            {
+                ResetSliderBar();
+                holdDownButtonFinishTime = Time.time;
+                ThrowBall(holdDownButtonFinishTime - holdDownButtonStartTime);
+            }
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                PauseAndRestarTheGame();
+            }
+        }
     }
 
     void ThrowBall(float holdDownButtonTime)
@@ -69,5 +83,16 @@ public class PlayerController : MonoBehaviour
         forceSlider.gameObject.SetActive(false);
     }
 
-
+    private void PauseAndRestarTheGame()
+    {
+        isPaused = !isPaused;
+        if (isPaused)
+        {
+            Time.timeScale = 0;
+        }
+        else if (!isPaused)
+        {
+            Time.timeScale = 1;
+        }
+    }
 }

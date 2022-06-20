@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasketMovement : MonoBehaviour
 {
-    [SerializeField] private float boundZ = 10;
+    [SerializeField] private float boundZ = 9;
     [SerializeField] private float speedBox = 3;
     [SerializeField] private bool isRight = true;
 
