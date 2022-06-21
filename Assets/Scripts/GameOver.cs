@@ -15,7 +15,10 @@ public class GameOver : MonoBehaviour
             gameOver = true;
             gameOverMenu.gameObject.SetActive(true);
             menu.gameObject.SetActive(false);
+
             Time.timeScale = 0;
+
+            if (BasketBallCount.countBasketBall > MainManager.score) MainManager.Instance.SaveScore();
 
         }
     }

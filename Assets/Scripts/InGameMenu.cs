@@ -26,7 +26,8 @@ public class InGameMenu : MonoBehaviour
     {
 
         SceneManager.LoadScene(0);
-
+        Time.timeScale = 1;
+        if (BasketBallCount.countBasketBall > MainManager.score) MainManager.Instance.SaveScore();
     }
 
     public void TryAgain()

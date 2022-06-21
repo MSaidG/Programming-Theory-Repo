@@ -9,7 +9,12 @@ public class SettingsUI : MonoBehaviour
 {
     [SerializeField]private AudioMixer audioMixer;
 
-    private TMP_Dropdown resolutionDropdown;
+    private const string SCREEN_WIDTH = "sc_width";
+    private const string SCREEN_HEIGHT = "sc_height";
+
+    public TMP_Dropdown resolutionDropdown;
+    public TMP_Dropdown qualityDropdown;
+    public Slider volume;
 
     private Resolution[] resolutions;
 
@@ -38,7 +43,10 @@ public class SettingsUI : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
-
+        Screen.SetResolution(1920, 1080, true);
+        // QualitySettings.SetQualityLevel(qualityIndex);
+        qualityDropdown.value = QualitySettings.GetQualityLevel();
+        //audioMixer.SetFloat("volume", volume.value);
     }
 
 
@@ -47,8 +55,9 @@ public class SettingsUI : MonoBehaviour
         audioMixer.SetFloat("volume", volume);
     }
 
-    private void SetGraphicQuality(int qualityIndex)
+    public void SetGraphicQuality()
     {
+        int qualityIndex = qualityDropdown.value;
         QualitySettings.SetQualityLevel(qualityIndex);
     }
 
@@ -56,4 +65,28 @@ public class SettingsUI : MonoBehaviour
     {
         Screen.fullScreen = isFullscreen;
     }
+
+    public void SetResolution()
+    {
+        if(resolutionDropdown.value == 0)  Screen.SetResolution(640, 480, true);
+        if (resolutionDropdown.value == 1) Screen.SetResolution(720, 480, true);
+        if (resolutionDropdown.value == 2) Screen.SetResolution(720, 576, true);
+        if (resolutionDropdown.value == 3) Screen.SetResolution(800, 600, true);
+        if (resolutionDropdown.value == 4) Screen.SetResolution(1024, 768, true);
+        if (resolutionDropdown.value == 5) Screen.SetResolution(1152, 864, true);
+        if (resolutionDropdown.value == 6) Screen.SetResolution(1176, 664, true);
+        if (resolutionDropdown.value == 7) Screen.SetResolution(1280, 720, true);
+        if (resolutionDropdown.value == 8) Screen.SetResolution(1280, 768, true);
+        if (resolutionDropdown.value == 9) Screen.SetResolution(1280, 800, true);
+        if (resolutionDropdown.value == 10) Screen.SetResolution(1280, 1024, true);
+        if (resolutionDropdown.value == 11) Screen.SetResolution(1360, 768, true);
+        if (resolutionDropdown.value == 12) Screen.SetResolution(1366, 768, true);
+        if (resolutionDropdown.value == 13) Screen.SetResolution(1440, 900, true);
+        if (resolutionDropdown.value == 14) Screen.SetResolution(1600, 900, true);
+        if (resolutionDropdown.value == 15) Screen.SetResolution(1600, 1024, true);
+        if (resolutionDropdown.value == 16) Screen.SetResolution(1680, 1050, true);
+        if (resolutionDropdown.value == 17) Screen.SetResolution(1920, 1080, true);
+        if (resolutionDropdown.value == 18) Screen.SetResolution(3840, 2160, true);
+    }
+
 }
