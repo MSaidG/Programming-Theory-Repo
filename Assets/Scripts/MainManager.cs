@@ -5,9 +5,9 @@ using System.IO;
 
 public class MainManager : MonoBehaviour
 {
+    //ENCAPSULATION
     public static MainManager Instance { get; private set; }
-
-    public static int score;
+    public static int score { get; private set; }
 
     private void Awake()
     {
@@ -34,11 +34,11 @@ public class MainManager : MonoBehaviour
          
         SaveData data = new SaveData();
 
-            data.score = BasketBallCount.countBasketBall;
+        data.score = BasketBallCount.countBasketBall;
 
-            string json = JsonUtility.ToJson(data);
+        string json = JsonUtility.ToJson(data);
 
-            File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
+        File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
 
     }
 

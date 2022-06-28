@@ -7,6 +7,7 @@ public class GameOver : MonoBehaviour
 {
     public GameObject gameOverMenu;
     public GameObject menu;
+    //ENCAPSULATION
     public bool gameOver { get; private set; }
     public void OnCollisionEnter(Collision other)
     {
@@ -18,8 +19,11 @@ public class GameOver : MonoBehaviour
 
             Time.timeScale = 0;
 
-            if (BasketBallCount.countBasketBall > MainManager.score) MainManager.Instance.SaveScore();
-
+            //MainManager manager = new MainManager();
+            if (MainManager.Instance)
+            {
+                if (BasketBallCount.countBasketBall > MainManager.score) MainManager.Instance.SaveScore();
+            }
         }
     }
 }

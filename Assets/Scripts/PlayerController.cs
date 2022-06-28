@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private float sliderFill = 0;
     private float runTime = 2f;
 
-    private bool isPaused;
+    private bool isPaused = false;
 
     // Start is called before the first frame update
     void Start()
@@ -52,12 +52,13 @@ public class PlayerController : MonoBehaviour
                 holdDownButtonFinishTime = Time.time;
                 ThrowBall(holdDownButtonFinishTime - holdDownButtonStartTime);
             }
-
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                PauseAndRestarTheGame();
-            }
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PauseAndRestartTheGame();
+        }
+
     }
 
     void ThrowBall(float holdDownButtonTime)
@@ -83,7 +84,7 @@ public class PlayerController : MonoBehaviour
         forceSlider.gameObject.SetActive(false);
     }
 
-    private void PauseAndRestarTheGame()
+    private void PauseAndRestartTheGame()
     {
         isPaused = !isPaused;
         if (isPaused)
@@ -95,4 +96,5 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = 1;
         }
     }
+
 }

@@ -10,17 +10,22 @@ using UnityEditor;
 public class MenuUI : MonoBehaviour
 {
     public TextMeshProUGUI highScoreText;
-    public MainManager manager;
+    //public MainManager manager;
+    //MainManager manager = new MainManager();
     //public MainManager manager;
 
     private void Start() 
-    {
+    { 
         MainManager.Instance.LoadScore();
+
+       
         int score = MainManager.score;
+
         if (highScoreText != null) 
         {
             highScoreText.text = "High Score: " + score;
         }
+
         //highScoreText = new highScoreText();
 
     }

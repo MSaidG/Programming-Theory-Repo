@@ -9,9 +9,6 @@ public class SettingsUI : MonoBehaviour
 {
     [SerializeField]private AudioMixer audioMixer;
 
-    private const string SCREEN_WIDTH = "sc_width";
-    private const string SCREEN_HEIGHT = "sc_height";
-
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown qualityDropdown;
     public Slider volume;
@@ -44,9 +41,8 @@ public class SettingsUI : MonoBehaviour
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
         Screen.SetResolution(1920, 1080, true);
-        // QualitySettings.SetQualityLevel(qualityIndex);
         qualityDropdown.value = QualitySettings.GetQualityLevel();
-        //audioMixer.SetFloat("volume", volume.value);
+
     }
 
 

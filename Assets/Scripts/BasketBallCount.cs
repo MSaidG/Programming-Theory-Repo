@@ -7,7 +7,9 @@ public class BasketBallCount : MonoBehaviour
 {
     public TextMeshProUGUI counterText;
 
-    public static int countBasketBall = 0;
+    //ENCAPSULATION
+    public static int countBasketBall{ get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
