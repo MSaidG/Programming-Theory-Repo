@@ -61,13 +61,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    //ABSTRACTION
     void ThrowBall(float holdDownButtonTime)
     {
         Ray r = cameraMain.ScreenPointToRay(Input.mousePosition);
         Vector3 direction = r.GetPoint(1) - r.GetPoint(0);
         GameObject projectile = Instantiate(ball, r.GetPoint(2), Quaternion.LookRotation(direction));
 
-        projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * throwForce * holdDownButtonTime);
+        projectile.GetComponent<Rigidbody>().AddForce(holdDownButtonTime * throwForce * projectile.transform.forward);
     }
 
     void FillBar()

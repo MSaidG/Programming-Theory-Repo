@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BasketMovement : MonoBehaviour
+
+    //INHERITANCE
+    //POLYMORPHISM
 {
-    [SerializeField] private float boundZ = 9;
-    [SerializeField] private float speedBox = 3;
-    [SerializeField] private bool isRight = true;
+    private float boundZ = 9;
+    private float speedBox = 3;
+    private bool isRight = true;
     private int a = 1;
     private int b = 1;
 
@@ -16,7 +19,8 @@ public class BasketMovement : MonoBehaviour
         MoveBetweenBounds();
     }
 
-    private void MoveBetweenBounds()
+    //ABSTRACTION
+    public virtual void MoveBetweenBounds()
     {
 
 
@@ -41,12 +45,12 @@ public class BasketMovement : MonoBehaviour
         }
     }
 
-    private void GoRight(int x)
+    public virtual void GoRight(int x)
     {
         transform.Translate(0, 0, Time.deltaTime * speedBox * x);
     }
 
-    private void GoLeft(int x)
+    public virtual void GoLeft(int x)
     {
         transform.Translate(0, 0, -(Time.deltaTime * speedBox * x));
     }

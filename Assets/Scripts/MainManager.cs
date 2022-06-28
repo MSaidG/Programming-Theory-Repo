@@ -29,6 +29,7 @@ public class MainManager : MonoBehaviour
         public int score;
     }
 
+    //ABSTRACTION
     public void SaveScore()
     {
          
